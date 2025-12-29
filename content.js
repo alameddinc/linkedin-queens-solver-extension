@@ -153,7 +153,7 @@ class LinkedInQueensSolverUI {
       // For solved games, show all queen positions as solution
       this.solution = queenPositions;
       this.highlightSolution(true); // Pass true to indicate it's already solved
-      this.showNotification('Oyun çözülmüş! Tüm vezirler gösteriliyor 👑', 'success');
+      this.showNotification('Game solved! Showing all queens 👑', 'success');
       return true;
     }
 
@@ -167,7 +167,7 @@ class LinkedInQueensSolverUI {
       return true;
     } else {
       console.log('🎯 No solution found!');
-      this.showNotification('Çözüm bulunamadı! 😕', 'error');
+      this.showNotification('No solution found! 😕', 'error');
       return false;
     }
   }
@@ -252,9 +252,9 @@ class LinkedInQueensSolverUI {
 
     if (solutionCount > 0) {
       if (isSolved) {
-        this.showNotification(`Tüm ${solutionCount} vezir gösteriliyor! 👑`, 'success');
+        this.showNotification(`Showing all ${solutionCount} queens! 👑`, 'success');
       } else {
-        this.showNotification(`${solutionCount} vezir yerleştir! 👑`, 'success');
+        this.showNotification(`Place ${solutionCount} queens! 👑`, 'success');
       }
       this.showControlPanel();
     }
@@ -281,7 +281,7 @@ class LinkedInQueensSolverUI {
       return;
     }
 
-    this.showNotification('Otomatik çözüm başlıyor... 🤖', 'info');
+    this.showNotification('Auto-solving in progress... 🤖', 'info');
 
     for (const pos of this.solution) {
       const cell = this.cells.find(c =>
@@ -300,7 +300,7 @@ class LinkedInQueensSolverUI {
       }
     }
 
-    this.showNotification('Tamamlandı! 🎉', 'success');
+    this.showNotification('Completed! 🎉', 'success');
   }
 
   /**
@@ -343,7 +343,7 @@ class LinkedInQueensSolverUI {
           cursor: pointer;
           transition: background 0.2s;
         ">
-          🤖 Otomatik Çöz
+          🤖 Auto-Solve
         </button>
         <button id="queens-show-solution" style="
           background: #57a639;
@@ -355,7 +355,7 @@ class LinkedInQueensSolverUI {
           cursor: pointer;
           transition: background 0.2s;
         ">
-          👁️ Çözümü Göster
+          👁️ Show Solution
         </button>
         <button id="queens-hide-solution" style="
           background: #666;
@@ -367,7 +367,7 @@ class LinkedInQueensSolverUI {
           cursor: pointer;
           transition: background 0.2s;
         ">
-          ❌ Gizle
+          ❌ Hide
         </button>
       </div>
     `;
