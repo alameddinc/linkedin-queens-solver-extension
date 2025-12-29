@@ -20,8 +20,8 @@
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/linkedin-queens-solver.git
-cd linkedin-queens-solver
+git clone https://github.com/alameddinc/linkedin-queens-solver-extension.git
+cd linkedin-queens-solver-extension
 ```
 
 ### 2. Load Extension in Chrome
@@ -35,7 +35,7 @@ cd linkedin-queens-solver
 
 3. Click **"Load unpacked"** button
 
-4. Select the cloned `linkedin-queens-solver` directory
+4. Select the cloned `linkedin-queens-solver-extension` directory
 
 5. The extension is now installed! 🎉
 
@@ -143,7 +143,7 @@ A standalone test page (`test-demo.html`) is included for testing the algorithm:
 ## 📁 Project Structure
 
 ```
-linkedin-queens-solver/
+linkedin-queens-solver-extension/
 ├── manifest.json          # Chrome extension configuration
 ├── solver.js              # N-Queens backtracking algorithm
 ├── content.js             # LinkedIn page interaction logic
