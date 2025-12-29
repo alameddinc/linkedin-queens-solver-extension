@@ -1,140 +1,101 @@
 # 👑 LinkedIn Queens Solver
 
-LinkedIn Queens oyununu otomatik olarak çözen Chrome extension.
+> A Chrome extension that automatically solves the LinkedIn Queens game using a backtracking algorithm.
 
-## 🎯 Özellikler
+[![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-brightgreen.svg)](https://www.google.com/chrome/)
+[![Manifest V3](https://img.shields.io/badge/Manifest-V3-blue.svg)](https://developer.chrome.com/docs/extensions/mv3/intro/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-- ✅ **Otomatik Çözüm**: Bir tıkla tüm oyunu otomatik çöz
-- 👁️ **Görsel İpuçları**: Hangi hücrelere vezir yerleştireceğini göster
-- ⚡ **Hızlı ve Doğru**: Backtracking algoritması ile hızlı çözüm
-- 🎨 **Modern Arayüz**: Kullanıcı dostu ve güzel tasarım
-- 🔄 **Otomatik Algılama**: LinkedIn'de oyunu otomatik olarak algılar
+## ✨ Features
 
-## 📦 Kurulum
+- ✅ **Auto-Solve**: Automatically solve the entire game with one click
+- 👁️ **Visual Hints**: Shows you where to place queens with colored highlights
+- ⚡ **Fast & Accurate**: Uses efficient backtracking algorithm for quick solutions
+- 🎨 **Modern UI**: Clean, user-friendly interface with floating action button
+- 🔄 **Auto-Detection**: Automatically detects the game on LinkedIn pages
+- 🎯 **Smart Highlighting**: Different colors for existing queens vs. new placements
 
-### Chrome/Edge'e Yükleme
+## 📦 Installation
 
-1. Bu klasörün konumunu not al: `/Users/alameddincelik/Projects/queuesolver/linkedin-queens-solver`
+### 1. Clone the Repository
 
-2. Chrome'u aç ve adres çubuğuna yaz:
+```bash
+git clone https://github.com/yourusername/linkedin-queens-solver.git
+cd linkedin-queens-solver
+```
+
+### 2. Load Extension in Chrome
+
+1. Open Chrome and navigate to:
    ```
    chrome://extensions/
    ```
 
-3. Sağ üstten **"Geliştirici modu"** (Developer mode) açık olduğundan emin ol
+2. Enable **Developer mode** (toggle in the top-right corner)
 
-4. **"Paketlenmemiş uzantı yükle"** (Load unpacked) butonuna tıkla
+3. Click **"Load unpacked"** button
 
-5. Şu klasörü seç:
-   ```
-   /Users/alameddincelik/Projects/queuesolver/linkedin-queens-solver
-   ```
+4. Select the cloned `linkedin-queens-solver` directory
 
-6. Uzantı yüklendi! 🎉
+5. The extension is now installed! 🎉
 
-### İkon Oluşturma (Opsiyonel)
+### 3. Optional: Add Icons
 
-İkonlar şu an eksik. İsterseniz şu adımları izleyerek ekleyebilirsiniz:
+Icons are not included by default. To add them:
 
-1. 16x16, 48x48 ve 128x128 boyutlarında vezir ikonu oluştur
-2. `icons/` klasörüne şu isimlerle kaydet:
+1. Create queen icons in three sizes: 16x16, 48x48, and 128x128 pixels
+2. Save them in an `icons/` directory with these names:
    - `icon16.png`
    - `icon48.png`
    - `icon128.png`
 
-Veya ikonsuz da kullanabilirsiniz, çalışmaya devam edecektir.
+The extension works fine without icons.
 
-## 🎮 Kullanım
+## 🎮 Usage
 
-1. LinkedIn'i aç: [linkedin.com](https://linkedin.com)
+1. Navigate to [LinkedIn](https://linkedin.com)
 
-2. Queens oyununa git (Games bölümünden)
+2. Go to the Queens game (find it in the Games section)
 
-3. Sağ altta çıkan **👑** butonuna tıkla
+3. Click the **👑** floating button that appears in the bottom-right corner
 
-4. İki seçenek var:
-   - **🤖 Otomatik Çöz**: Oyunu otomatik olarak çözer
-   - **👁️ Çözümü Göster**: Sadece çözümü işaretler, sen yerleştirirsin
+4. Choose your preferred option:
+   - **🤖 Auto-Solve**: Automatically places all queens on the board
+   - **👁️ Show Solution**: Highlights the solution but lets you place queens manually
+   - **❌ Hide**: Removes all highlights
 
-## 🎨 Renk Sistemi
+## 🎨 Color System
 
-### LinkedIn Extension'da:
+The extension uses a color-coded system to differentiate between different types of queens:
 
-- 🟢 **Yeşil vurgu + beyaz numara**: Yeni çözüm (henüz yerleştirilmemiş vezirler)
-- 🟡 **Altın vurgu + koyu numara**: Mevcut vezirler (zaten yerleştirilmiş vezirler)
+### In LinkedIn Extension:
+- 🟢 **Green highlight + white number**: New solution positions (queens not yet placed)
+- 🟡 **Gold highlight + dark number**: Existing queens (already placed on the board)
 
-### Test Sayfasında:
+### In Test Page:
+- 🟢 **Green border**: Solution position not yet filled
+- 🟡 **Gold border**: Manually placed queen that's part of the solution
+- **♛ Symbol**: Manually placed queen
+- **✕ Mark**: Blocked cell
+- **Number**: Placement order indicator
 
-- 🟢 **Yeşil kenarlık**: Çözümde olan ama henüz yerleştirilmemiş pozisyon
-- 🟡 **Altın kenarlık**: Manuel yerleştirdiğin ve çözümde de olan vezir
-- **♛ Sembolü**: Manuel yerleştirilmiş vezir
-- **✕ İşareti**: Engellenmiş hücre
-- **Numara**: Hangi sırada yerleştireceğini gösterir
+## 🔧 How It Works
 
-## 🔧 Nasıl Çalışır?
+### Algorithm
 
-### Algoritma
+The extension solves the classic **N-Queens problem** using a **backtracking algorithm**:
 
-Extension, klasik **N-Queens** problemini çözmek için **backtracking** algoritması kullanır:
+1. **Analyze Board**: Detects the current board state
+2. **Identify Constraints**: Finds existing queens and blocked cells
+3. **Backtracking Search**: Tries all possible queen placements
+4. **Constraint Validation**: Ensures no queens attack each other
+5. **Display Solution**: Highlights valid positions
 
-1. Mevcut tahtayı analiz eder
-2. Yerleştirilmiş vezirleri ve engellenmiş hücreleri tespit eder
-3. Backtracking ile tüm olası çözümleri dener
-4. İlk geçerli çözümü bulur ve gösterir
-
-### Kod Yapısı
-
-```
-linkedin-queens-solver/
-├── manifest.json          # Chrome extension yapılandırması
-├── solver.js              # N-Queens solver algoritması
-├── content.js             # LinkedIn sayfasıyla etkileşim
-├── popup.html             # Extension popup arayüzü
-├── popup.js               # Popup script
-├── styles.css             # Görsel stiller
-└── icons/                 # Extension ikonları
-    ├── icon16.png
-    ├── icon48.png
-    └── icon128.png
-```
-
-## 🐛 Sorun Giderme
-
-### Extension çalışmıyor
-
-1. Chrome extensions sayfasında extension'ın aktif olduğundan emin ol
-2. LinkedIn sayfasını yenile (F5)
-3. Console'u aç (F12) ve hata mesajlarını kontrol et
-
-### Oyun bulunamadı hatası
-
-1. Queens oyununun açık olduğundan emin ol
-2. Sayfayı yenile
-3. Birkaç saniye bekle, oyun yüklenmesi gerekiyor
-
-### Çözüm bulunamadı
-
-- Bu normal! Bazı oyun durumları çözülemez olabilir
-- Mevcut vezirlerin konumları çözümü engelliyor olabilir
-- Oyunu sıfırlayıp tekrar dene
-
-## 📝 Lisans
-
-Bu proje eğitim amaçlıdır. LinkedIn'in kullanım şartlarına uygun şekilde kullanın.
-
-## 🤝 Katkıda Bulunma
-
-Öneriler ve iyileştirmeler için issue açabilir veya pull request gönderebilirsiniz.
-
-## 🎓 Teknik Detaylar
-
-### Solver Algoritması
-
-N-Queens problemi için klasik backtracking yaklaşımı:
+### Backtracking Implementation
 
 ```javascript
 function solveNQueens(col, blockedCells) {
-  if (col >= size) return true; // Tüm vezirler yerleştirildi
+  if (col >= size) return true; // All queens placed successfully
 
   for (let row = 0; row < size; row++) {
     if (isSafe(row, col, blockedCells)) {
@@ -152,27 +113,119 @@ function solveNQueens(col, blockedCells) {
 }
 ```
 
-### Güvenlik Kontrolü
-
-Bir hücreye vezir yerleştirilebilir mi?
+### Safety Check
 
 ```javascript
-function isSafe(row, col) {
-  // Satır kontrolü
-  // Sütun kontrolü
-  // Çapraz kontrolü (4 yön)
-  // Engellenmiş hücre kontrolü
+function isSafe(row, col, blockedCells) {
+  // Check row for conflicts
+  // Check column for conflicts
+  // Check both diagonals (4 directions)
+  // Check if cell is blocked
 }
 ```
 
-## 🚀 Gelecek Özellikler
+## 🧪 Testing
 
-- [ ] Birden fazla çözüm gösterme
-- [ ] Çözüm animasyonları
-- [ ] İstatistik takibi
-- [ ] Farklı çözüm stratejileri
-- [ ] Dark mode desteği
+A standalone test page (`test-demo.html`) is included for testing the algorithm:
+
+1. Open `test-demo.html` in your browser
+
+2. Features:
+   - **Board Sizes**: Test with 4x4 to 10x10 grids
+   - **Manual Placement**: Click to place queens or blocked cells
+   - **Solve**: See the algorithm find solutions
+   - **Step-by-Step**: Watch the solution build incrementally
+   - **Random Blocks**: Generate random obstacles
+   - **Statistics**: View solve time and board metrics
+
+3. Color coding in test page matches the extension
+
+## 📁 Project Structure
+
+```
+linkedin-queens-solver/
+├── manifest.json          # Chrome extension configuration
+├── solver.js              # N-Queens backtracking algorithm
+├── content.js             # LinkedIn page interaction logic
+├── popup.html             # Extension popup interface
+├── popup.js               # Popup functionality
+├── styles.css             # Visual styling
+├── test-demo.html         # Standalone testing page
+└── README.md              # This file
+```
+
+## 🐛 Troubleshooting
+
+### Extension Not Working
+
+1. Ensure the extension is **enabled** in `chrome://extensions/`
+2. Refresh the LinkedIn page (F5)
+3. Open DevTools Console (F12) and check for errors
+4. Make sure you're on the Queens game page
+
+### "Game Not Found" Error
+
+1. Verify the Queens game is actually open
+2. Refresh the page
+3. Wait a few seconds for the game to fully load
+4. Check if LinkedIn updated their DOM structure
+
+### "No Solution Found"
+
+This is normal in some cases:
+- The current board state may be unsolvable
+- Existing queen placements may block all valid solutions
+- Try resetting the game and solving from scratch
+
+## 🤝 Contributing
+
+Contributions are welcome! Here's how you can help:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 🚀 Future Features
+
+- [ ] Multiple solution viewer
+- [ ] Solution animations
+- [ ] Statistics tracking across sessions
+- [ ] Alternative solving strategies
+- [ ] Dark mode support
+- [ ] Internationalization (i18n)
+
+## 📝 License
+
+This project is for educational purposes. Please use it in accordance with LinkedIn's Terms of Service.
+
+## ⚠️ Disclaimer
+
+This extension is an educational project demonstrating the N-Queens algorithm. It is not affiliated with, endorsed by, or officially connected to LinkedIn in any way.
+
+## 🎓 Technical Details
+
+### Algorithm Complexity
+- **Time Complexity**: O(N!) in worst case
+- **Space Complexity**: O(N²) for board representation
+- **Optimization**: Early pruning with constraint checking
+
+### Browser Compatibility
+- Chrome 88+
+- Edge 88+
+- Any Chromium-based browser with Manifest V3 support
+
+### LinkedIn DOM Integration
+The extension uses LinkedIn's data attributes for game detection:
+- `[data-testid="interactive-grid"]` - Game board container
+- `[data-cell-idx]` - Individual cell identification
+- `aria-label` attributes - Cell state detection (queened/crossed)
 
 ---
 
-**Made with ❤️ for LinkedIn gamers**
+**Made with ❤️ for LinkedIn gamers and algorithm enthusiasts**
+
+### Star History
+
+If this project helps you, please consider giving it a ⭐️!
